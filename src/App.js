@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import { SearchMovie } from "./components/SearchMovie";
-import { MovieProvider } from "./MovieContext";
+import { SearchMovie } from './components/SearchMovie';
+import { MovieProvider } from './MovieContext';
+import { MoviesCharts } from './components/MoviesCharts';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="container">
         <h1 className="title">Movie Search</h1>
         <SearchMovie />
+        <MoviesCharts />
       </div>
     </MovieProvider>
   );

@@ -4,7 +4,7 @@ import { MovieContext } from "../MovieContext";
 import { Form } from "./Form";
 
 export const SearchMovie = () => {
-    const [query, movies, setMovies] = useContext(MovieContext);
+    const [query, setQuery, movies, setMovies] = useContext(MovieContext);
 
     const search = async (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ export const SearchMovie = () => {
 
     return (
         <>
-            <Form search={search()}/>
+            <Form onSubmit={search}/>
             <div className="card-list">
                 {movies.filter(movie => movie.poster_path).map(movie => (
                    <MovieCard movie={movie} key={movie.id} />

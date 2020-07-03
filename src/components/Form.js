@@ -5,7 +5,7 @@ export const Form = search => {
   const [query, setQuery] = useContext(MovieContext);
 
   return (
-    <form className="form" onSubmit={search}>
+    <form className="form" onSubmit={search.onSubmit}>
         <label className="label" htmlFor="query">Movie Name</label>
         <input className="input" type="text" name="query"
             placeholder="i.e. Jurassic Park"
