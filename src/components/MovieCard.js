@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 export const MovieCard =  ({movie}) => {
     return (
@@ -16,3 +17,9 @@ export const MovieCard =  ({movie}) => {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    movies: state.movies
+});
+
+export default connect(mapStateToProps)(MovieCard);

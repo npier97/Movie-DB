@@ -1,34 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import { MovieCard } from "./MovieCard";
-import { MovieContext } from "../MovieContext";
-import { Form } from "./Form";
+import Form from "./Form";
+import { connect } from "react-redux";
 
-export const SearchMovie = () => {
-    const [query, setQuery, movies, setMovies] = useContext(MovieContext);
+export const SearchMovie = ({query, movies}) => (
+    <>
+        <Form />
+        <div className="card-list">
+            {console.log(movies)}
+            {/* {movies.filter(movie => movie.poster_path).map(movie => (
+                <MovieCard movie={movie} key={movie.id} />
+            ))} */}
+        </div>
+    </>
+);
 
-    const search = async (e) => {
-        e.preventDefault();
+const mapStateToProps = state => ({
+    query: state.query,
+    movies: state.movies
+});
 
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=21e7b70aa3037a9a670477c21bc87838&language=en-US&query=${query}&page=1&include_adult=false`;
-
-        try {
-            const res = await fetch(url);
-            const data  = await res.json();
-            // toggleVisibility()
-            setMovies(data.results);
-        }catch(err){
-            console.error(err);
-        }
-    }
-
-    return (
-        <>
-            <Form onSubmit={search}/>
-            <div className="card-list">
-                {movies.filter(movie => movie.poster_path).map(movie => (
-                   <MovieCard movie={movie} key={movie.id} />
-                ))}
-            </div>
-        </>
-    )
-}
+export default connect(mapStateToProps)(SearchMovie);
