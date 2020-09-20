@@ -1,5 +1,5 @@
 import React from 'react';
-import { setQuery, getMovies } from '../state/action';
+import { setQuery, getSearchedMovies } from '../state/action';
 import { connect } from "react-redux";
 import { MovieCard } from './MovieCard';
 
@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   setQuery: (query) => dispatch(setQuery(query)),
   onSubmit: () => {
-    dispatch(getMovies());
+    dispatch(getSearchedMovies());
   }
 });
 
