@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { SEARCH_MOVIE, SET_QUERY, TOP_RATED } from './constants';
 
-const DEFAULT_STATE = { query: '', movies: [], isVisible: false, TopRated: [] }
+const DEFAULT_STATE = { query: '', movies: [], isVisible: false, topRated: [] }
 
 const setQuery = (state = DEFAULT_STATE.query, action) => {
   switch(action.type) {
@@ -21,7 +21,7 @@ const searchMovie = (state = DEFAULT_STATE.movies, action) => {
   }
 };
 
-const topRated = (state = DEFAULT_STATE.TopRated, action) => {
+const topRated = (state = DEFAULT_STATE.topRated, action) => {
   switch(action.type) {
     case TOP_RATED:
       return {...state, movies: action.payload};
