@@ -1,17 +1,49 @@
-import React, { useContext } from 'react';
-import { MovieContext } from "../MovieContext";
+import React from 'react';
+import { setQuery, getSearchedMovies } from '../state/action';
+import { connect } from "react-redux";
+import { MovieCard } from './MovieCard';
 
-export const Form = search => {
-  const [query, setQuery] = useContext(MovieContext);
+const Form = ({query, movies, setQuery, onSubmit}) => {
+  const handleQueryChange = (e) => {
+    const query = e.target.value;
+    setQuery(query);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  }
 
   return (
-    <form className="form" onSubmit={search.onSubmit}>
+  <>
+    <form className="form" onSubmit={handleSubmit}>
         <label className="label" htmlFor="query">Movie Name</label>
         <input className="input" type="text" name="query"
             placeholder="i.e. Jurassic Park"
-            value={query} onChange={(e) => setQuery(e.target.value)}
+            value={query} onChange={handleQueryChange}
             />
         <button className="button" type="submit">Search</button>
     </form>
-  )
-};
+    {movies && (
+      <div className="card-list">
+        {movies.map(movie => (
+            <MovieCard movie={movie} key={movie.id} />
+        ))}
+      </div>
+    )}
+  </>
+)};
+
+const mapStateToProps = state => ({
+  query: state.query,
+  movies: state.search.movies,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setQuery: (query) => dispatch(setQuery(query)),
+  onSubmit: () => {
+    dispatch(getSearchedMovies());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
