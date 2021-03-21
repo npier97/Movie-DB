@@ -1,8 +1,17 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { IReduxState, ITopRatedMovies } from "../interfaces/state";
-import { getTopRated } from "../state/action";
-import { TopMovie } from "./TopMovie";
+import styled from '@emotion/styled';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { IReduxState, ITopRatedMovies } from '../interfaces/state';
+import { getTopRated } from '../state/action';
+import { TopMovie } from './TopMovie';
+
+const StyledContainer = styled.div({
+  margin: '2rem',
+  padding: '2rem 4rem',
+  borderRadius: '10px',
+  backgroundColor: 'white',
+  boxShadow: '1px 1px 5px rgba(0, 0, 0, 0.25)',
+});
 
 export const TopRatedMovies: React.FC<ITopRatedMovies> = ({
   ratedMovies,
@@ -10,17 +19,17 @@ export const TopRatedMovies: React.FC<ITopRatedMovies> = ({
 }) => {
   useEffect(() => {
     getTopRated();
-  }, []);
+  }, [getTopRated]);
 
   return (
     <div>
       <h1>Top rated movies</h1>
       {ratedMovies && (
-        <div className="top-chart">
+        <StyledContainer>
           {ratedMovies.map((movie) => (
             <TopMovie movie={movie} key={movie.id} />
           ))}
-        </div>
+        </StyledContainer>
       )}
     </div>
   );
