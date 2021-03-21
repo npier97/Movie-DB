@@ -4,21 +4,21 @@ import Text from '../components/Text';
 import star from '../images/star.png';
 import { IMovie } from '../interfaces/state';
 
-const StyledContainer = styled.div`
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
+const StyledContainer = styled.div({
+  margin: '10px 0',
+  display: 'flex',
+  justifyContent: 'space-between',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+});
 
-const StyledImage = styled.img`
-  width: 50px;
-`;
+const StyledImage = styled.img({
+  width: '50px',
+});
 
-const StyledIcon = styled.img`
-  width: 15px;
-`;
+const StyledIcon = styled.img({
+  width: '15px',
+});
 
 export const TopMovie: React.FC<IMovie> = ({ movie }) => {
   return (

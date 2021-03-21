@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-const Label = styled.label`
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
-`;
+const Label = styled.label({
+  fontSize: '1.2rem',
+  marginBottom: '0.2rem',
+  textTransform: 'uppercase',
+});
 
 export default Label;
