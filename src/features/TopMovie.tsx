@@ -3,13 +3,19 @@ import React from 'react';
 import Text from '../components/Text';
 import star from '../images/star.png';
 import { IMovie } from '../interfaces/state';
+import {
+  CSS_DISPLAY,
+  CSS_FLEX_DIRECTION,
+  CSS_FLEX_WRAP,
+  CSS_JUSTIFY_CONTENT,
+} from '../utils/theme';
 
 const StyledContainer = styled.div({
   margin: '10px 0',
-  display: 'flex',
-  justifyContent: 'space-between',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  display: CSS_DISPLAY.FLEX,
+  justifyContent: CSS_JUSTIFY_CONTENT.SPACE_BETWEEN,
+  flexDirection: CSS_FLEX_DIRECTION.ROW,
+  flexWrap: CSS_FLEX_WRAP.WRAP,
 });
 
 const StyledImage = styled.img({

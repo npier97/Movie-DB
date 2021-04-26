@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { CSS_COLOR } from '../utils/theme';
 
 const Button = styled.button({
   backgroundColor: 'rgba(0, 0, 0, 0.75)',
-  color: 'white',
+  color: CSS_COLOR.WHITE,
   padding: '1rem 2rem',
   border: '1px solid rgba(0, 0, 0, 0.75)',
   borderRadius: '20px',

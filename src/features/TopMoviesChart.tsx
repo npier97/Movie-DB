@@ -3,13 +3,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IReduxState, ITopRatedMovies } from '../interfaces/state';
 import { getTopRated } from '../state/action';
+import { CSS_COLOR } from '../utils/theme';
 import { TopMovie } from './TopMovie';
 
 const StyledContainer = styled.div({
   margin: '2rem',
   padding: '2rem 4rem',
   borderRadius: '10px',
-  backgroundColor: 'white',
+  backgroundColor: CSS_COLOR.WHITE,
   boxShadow: '1px 1px 5px rgba(0, 0, 0, 0.25)',
 });
 

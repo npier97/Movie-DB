@@ -2,18 +2,19 @@ import styled from '@emotion/styled';
 import React from 'react';
 import Text from '../components/Text';
 import { IMovie } from '../interfaces/state';
+import { CSS_COLOR, CSS_DISPLAY } from '../utils/theme';
 
 const StyledContainer = styled.div({
   margin: '2rem',
   padding: '2rem 4rem',
   borderRadius: '10px',
-  backgroundColor: 'white',
+  backgroundColor: CSS_COLOR.WHITE,
   boxShadow: '1px 1px 5px rgba(0, 0, 0, 0.25)',
 });
 
 const StyledImage = styled.img({
   margin: '0 auto',
-  display: 'block',
+  display: CSS_DISPLAY.BLOCK,
 });
 
 const StyledH3 = styled.h3({
