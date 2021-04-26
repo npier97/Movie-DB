@@ -1,16 +1,19 @@
 import React from 'react';
-import './App.css';
-import Form from './components/Form';
-import TopMoviesChart from './components/TopMoviesChart';
-
+import Container from './components/Container';
+import Link from './components/Link';
+import H1 from './components/titles/H1';
+import Form from './features/Form';
+import TopMoviesChart from './features/TopMoviesChart';
 
 function App() {
   return (
-      <div className="container">
-        <h1 className="title"><a href={'./'} className={'link'}>Movie Search</a></h1>
-        <Form />
-        <TopMoviesChart />
-      </div>
+    <Container>
+      <H1>
+        <Link href={'./'}>Movie Search</Link>
+      </H1>
+      <Form />
+      <TopMoviesChart />
+    </Container>
   );
 }
 
