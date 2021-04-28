@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { IReduxState, ITopRatedMovies } from '../interfaces/state';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTopRated } from '../state/action';
+import { getTopRatedSelector } from '../state/selectors';
 import { CSS_COLOR } from '../utils/theme';
 import { TopMovie } from './TopMovie';
 
@@ -14,13 +14,13 @@ const StyledContainer = styled.div({
   boxShadow: '1px 1px 5px rgba(0, 0, 0, 0.25)',
 });
 
-export const TopRatedMovies: React.FC<ITopRatedMovies> = ({
-  ratedMovies,
-  getTopRated,
-}) => {
+export const TopRatedMovies: React.FC = () => {
+  const dispatch = useDispatch();
+  const ratedMovies = useSelector(getTopRatedSelector);
+
   useEffect(() => {
-    getTopRated();
-  }, [getTopRated]);
+    dispatch(getTopRated());
+  }, [dispatch]);
 
   return (
     <div>
@@ -36,12 +36,4 @@ export const TopRatedMovies: React.FC<ITopRatedMovies> = ({
   );
 };
 
-const mapStateToProps = (state: IReduxState) => ({
-  ratedMovies: state.rated.movies,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  getTopRated: () => dispatch(getTopRated()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopRatedMovies);
+export default TopRatedMovies;
