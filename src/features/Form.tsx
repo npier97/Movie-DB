@@ -1,22 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../components/Button';
 import StyledForm from '../components/Form';
 import Input from '../components/Input';
 import Label from '../components/Label';
-import { IForm, IReduxState } from '../interfaces/state';
 import { getSearchedMovies, setQuery } from '../state/action';
+import { getMoviesSelector, getQuerySelector } from '../state/selectors';
 import { MovieCard } from './MovieCard';
 
-const Form: React.FC<IForm> = ({ query, movies, setQuery, onSubmit }) => {
+const Form: React.FC = () => {
+  const dispatch = useDispatch();
+  const query = useSelector(getQuerySelector);
+  const movies = useSelector(getMoviesSelector);
+
   const handleQueryChange = (e: any) => {
     const query = e.target.value;
-    setQuery(query);
+    dispatch(setQuery(query));
   };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    onSubmit();
+    dispatch(getSearchedMovies());
   };
 
   return (
@@ -43,16 +47,4 @@ const Form: React.FC<IForm> = ({ query, movies, setQuery, onSubmit }) => {
   );
 };
 
-const mapStateToProps = (state: IReduxState) => ({
-  query: state.query,
-  movies: state.search.movies,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  setQuery: (query: string) => dispatch(setQuery(query)),
-  onSubmit: () => {
-    dispatch(getSearchedMovies());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default Form;

@@ -8,20 +8,8 @@ export interface IReduxState {
   };
 }
 
-export interface ITopRatedMovies {
-  ratedMovies: IMovies[];
-  getTopRated: () => void;
-}
-
 export interface IMovie {
   movie: IMovies;
-}
-
-export interface IForm {
-  query: string;
-  movies: IMovies[];
-  setQuery: (value: string) => void;
-  onSubmit: () => void;
 }
 
 interface IMovies {
